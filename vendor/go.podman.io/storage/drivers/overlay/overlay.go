@@ -1525,7 +1525,7 @@ func (d *Driver) get(id string, disableShifting bool, options graphdriver.MountO
 	//    Use of userns id here will allow data interchanges between lower and upper
 	// Note that exception is when fuse-overlayfs is used (mountProgram != "")
 	// where the entire FS is ID mapped together and there is no need to change ID here
-	if disableShifting || !needsIDMapping {
+	if disableShifting || needsIDMapping {
 		rootUID, rootGID, err := idtools.GetRootUIDGID(options.UidMaps, options.GidMaps)
 		if err != nil {
 			return "", err
